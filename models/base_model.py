@@ -17,11 +17,11 @@ class BaseModel():
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        id = self.id
-        created_at = self.created_at
-        updated_at = self.updated_at
+        result_dict = {}
+        for key, value in self.__dict__.items():
+            result_dict[f"{key}"] = f"{value}"
 
-        return {"id": id, "created_at": created_at.isoformat(), "updated_at": updated_at.isoformat()}
+        return result_dict
 
     def __str__(self):
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
