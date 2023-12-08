@@ -5,6 +5,11 @@ import cmd
 import sys
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 from models import storage
 
 
@@ -26,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
         do_update(self, *arguments): Updates an instance
     """
     prompt = "(hbnb) "
-    class_names = ["BaseModel", "User"]
+    class_names = ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]
     objs = storage.all()
 
     def do_quit(self, arg):
@@ -131,6 +136,7 @@ class HBNBCommand(cmd.Cmd):
                 key = f"{arg[0]}.{arg[1]}"
                 setattr(HBNBCommand.objs[key], arg[2], arg[3])
 
+
 def switch_objects(obj_type):
     """Returns the object for the specified type"""
 
@@ -138,6 +144,16 @@ def switch_objects(obj_type):
         return BaseModel()
     elif obj_type == "User":
         return User()
+    elif obj_type == "State":
+        return State()
+    elif obj_type == "City":
+        return City()
+    elif obj_type == "Amenity":
+        return Amenity()
+    elif obj_type == "Place":
+        return Place()
+    elif obj_type == "Review":
+        return Review()
 
 
 if __name__ == "__main__":

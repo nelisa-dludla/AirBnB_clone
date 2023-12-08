@@ -51,6 +51,11 @@ class FileStorage():
         """deserializes the JSON file to __objects"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
 
         if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as file:
@@ -64,8 +69,19 @@ class FileStorage():
                         FileStorage.__objects[key] = BaseModel(**value)
                     elif class_name[0] == "User":
                         FileStorage.__objects[key] = User(**value)
+                    elif class_name[0] == "State":
+                        FileStorage.__objects[key] = State(**value)
+                    elif class_name[0] == "City":
+                        FileStorage.__objects[key] = City(**value)
+                    elif class_name[0] == "Amenity":
+                        FileStorage.__objects[key] = Amenity(**value)
+                    elif class_name[0] == "Place":
+                        FileStorage.__objects[key] = Place(**value)
+                    elif class_name[0] == "Review":
+                        FileStorage.__objects[key] = Review(**value)
 
 
 def format_datetime(obj):
+    """Converts datetime obj to isoformat"""
     if isinstance(obj, datetime):
         return obj.isoformat()
