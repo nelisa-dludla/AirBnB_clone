@@ -4,6 +4,7 @@
 import cmd
 import sys
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
@@ -25,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
         do_update(self, *arguments): Updates an instance
     """
     prompt = "(hbnb) "
-    class_names = ["BaseModel"]
+    class_names = ["BaseModel", "User"]
     objs = storage.all()
 
     def do_quit(self, arg):
@@ -43,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             if arguments[0] in HBNBCommand.class_names:
-                new_instance = BaseModel()
+                new_instance = switch_objects(arguments[0])
                 new_instance.save()
                 print(new_instance.id)
             else:
@@ -129,6 +130,14 @@ class HBNBCommand(cmd.Cmd):
             else:
                 key = f"{arg[0]}.{arg[1]}"
                 setattr(HBNBCommand.objs[key], arg[2], arg[3])
+
+def switch_objects(obj_type):
+    """Returns the object for the specified type"""
+
+    if obj_type == "BaseModel":
+        return BaseModel()
+    elif obj_type == "User":
+        return User()
 
 
 if __name__ == "__main__":

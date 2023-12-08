@@ -50,6 +50,7 @@ class FileStorage():
     def reload(self):
         """deserializes the JSON file to __objects"""
         from models.base_model import BaseModel
+        from models.user import User
 
         if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as file:
@@ -57,7 +58,12 @@ class FileStorage():
                 python_objects = json.loads(content)
 
                 for key, value in python_objects.items():
-                    FileStorage.__objects[key] = BaseModel(**value)
+
+                    class_name = key.split(".")
+                    if class_name[0] == "BaseModel":
+                        FileStorage.__objects[key] = BaseModel(**value)
+                    elif class_name[0] == "User":
+                        FileStorage.__objects[key] = User(**value)
 
 
 def format_datetime(obj):
