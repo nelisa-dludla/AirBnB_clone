@@ -10,21 +10,12 @@ class BaseModel():
     """
     Defines the class BaseModel
 
-    Attributes:
-        id (int): Id for the current instance
-        created_at (str): The date and time the instance was created
-        updated_at (str): The date and time the instance was updated
-
     Methods:
         __init__(self, *args, **kwargs): Initializes a new BaseModel instance
         save(self): Updates the current instance with the current datetime
         to_dict(self): Returns a dictionary represention of __dict__
         __str__(self): Returns a string representation of the instance
     """
-
-    id = str(uuid4())
-    created_at = datetime.now()
-    updated_at = datetime.now()
 
     def __init__(self, *args, **kwargs):
         """Initializes a new BaseModel instance"""
@@ -41,9 +32,9 @@ class BaseModel():
                     setattr(self, key, value)
 
         else:
-            self.id = BaseModel.id
-            self.created_at = BaseModel.created_at
-            self.updated_at = BaseModel.updated_at
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             storage.new(self)
 
     def save(self):
