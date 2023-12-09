@@ -144,11 +144,11 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             elif len(arg) < 3:
                 print("** attribute name missing **")
-            elif not hasattr(HBNBCommand.objs[f"{arg[0]}.{arg[1]}"], arg[2]):
+            elif len(arg) < 4:
                 print("** value missing **")
             else:
                 key = f"{arg[0]}.{arg[1]}"
-                setattr(HBNBCommand.objs[key], arg[2], arg[3])
+                setattr(HBNBCommand.objs[key], arg[2], arg[3].strip('"'))
 
 
 def switch_objects(obj_type):
