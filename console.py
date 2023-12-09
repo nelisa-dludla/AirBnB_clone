@@ -24,6 +24,7 @@ class HBNBCommand(cmd.Cmd):
     Methods:
         do_quit(self, args): Exits the program
         do_EOF(self, args): Handles the end-of-file command
+        emptyline(self): Does nothing
         do_create(self, *arguments): Creates a new instance of BaseModel
         do_show(self, *arguments): Prints a str representation of the instance
         do_destroy(self, *arguments): Destroys an instance
@@ -31,7 +32,16 @@ class HBNBCommand(cmd.Cmd):
         do_update(self, *arguments): Updates an instance
     """
     prompt = "(hbnb) "
-    class_names = ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]
+    class_names = [
+            "BaseModel",
+            "User",
+            "Place",
+            "State",
+            "City",
+            "Amenity",
+            "Review"
+        ]
+
     objs = storage.all()
 
     def do_quit(self, arg):
@@ -41,6 +51,10 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """Handles the end-of-file command"""
         return True
+
+    def emptyline(self):
+        """Does nothing"""
+        pass
 
     def do_create(self, *arguments):
         """Creates a new instance of BaseModel"""
