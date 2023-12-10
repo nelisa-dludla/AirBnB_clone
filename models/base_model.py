@@ -18,7 +18,11 @@ class BaseModel():
     """
 
     def __init__(self, *args, **kwargs):
-        """Initializes a new BaseModel instance"""
+        """Initializes a new BaseModel instance
+        Args:
+            *args (any): not in use.
+            **kwargs (dict): Key/value pairs of attributes"
+        """
 
         if kwargs:
             for key, value in kwargs.items():
