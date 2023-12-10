@@ -24,6 +24,7 @@ class TestReview(unittest.TestCase):
         self.assertEqual(text, "")
 
     def test_set_attributes(self):
+        """Check for correct value once set"""
 
         self.instance.place_id = "Place.id"
         self.instance.user_id = "User.id"
