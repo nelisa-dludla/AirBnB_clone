@@ -1,10 +1,13 @@
 # Hbnb
 
-This project is an Airbnb clone developed as part of a ALX programming assignment. The goal is to implement various functionalities such as creating and managing instances of different classes, serializing and deserializing data, and building a command-line interpreter to interact with the system.
+This project is an Airbnb clone developed as part of a ALX programming assignment. 
+The goal is to implement various functionalities such as creating and managing instances of different classes, 
+serializing and deserializing data, and building a command-line interpreter to interact with the system.
 
 ## Command Interpreter - console.py
 
-The command interpreter, `console.py`, serves as the entry point for interacting with the Airbnb clone. It utilizes the `cmd` module and provides a set of commands for managing different aspects of the application.
+The command interpreter, `console.py`, serves as the entry point for interacting with the Airbnb clone. 
+It utilizes the `cmd` module and provides a set of commands for managing different aspects of the application.
 
 ### How to Start the Command Interpreter
 

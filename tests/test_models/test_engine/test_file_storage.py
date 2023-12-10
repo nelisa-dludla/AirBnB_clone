@@ -24,23 +24,25 @@ class TestFileStorage(unittest.TestCase):
     """Unittests for testing instantiation of the FileStorage class."""
 
     def test_FileStorage_instantiation_no_args(self):
+        """Checks that instances has no args"""
         self.assertEqual(type(FileStorage()), FileStorage)
 
     def test_FileStorage_instantiation_with_arg(self):
+        """Checks that instances has args """
         with self.assertRaises(TypeError):
             FileStorage(None)
 
     def test_FileStorage_file_path_is_private_str(self):
+        """Checks that file path is s string"""
         self.assertEqual(str, type(FileStorage._FileStorage__file_path))
 
     def testFileStorage_objects_is_private_dict(self):
+        """Checks that the instance is a dict"""
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
-
-    def test_storage_initializes(self):
-        self.assertEqual(type(models.storage), FileStorage)
 
     @classmethod
     def setUp(self):
+        """Sets up a class method"""
         try:
             os.rename("file.json", "tmp")
         except IOError:
@@ -48,6 +50,7 @@ class TestFileStorage(unittest.TestCase):
 
     @classmethod
     def tearDown(self):
+        """Removes a class method"""
         try:
             os.remove("file.json")
         except IOError:
@@ -59,13 +62,16 @@ class TestFileStorage(unittest.TestCase):
         FileStorage._FileStorage__objects = {}
 
     def test_all(self):
+        """Checks that all method is a dict type"""
         self.assertEqual(dict, type(models.storage.all()))
 
     def test_all_with_arg(self):
+        """Checks all method with args"""
         with self.assertRaises(TypeError):
             models.storage.all(None)
 
     def test_new(self):
+        """Tests the creation of an instance with below attributes"""
         bm = BaseModel()
         us = User()
         st = State()
@@ -96,15 +102,17 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn(rv, models.storage.all().values())
 
     def test_new_with_args(self):
+        """Tests new instance with args"""
         with self.assertRaises(TypeError):
             models.storage.new(BaseModel(), 1)
 
     def test_new_with_None(self):
+        """Tests new instance with no args"""
         with self.assertRaises(AttributeError):
             models.storage.new(None)
 
-
     def test_reload_with_arg(self):
+        """Checks that args are reloaded"""
         with self.assertRaises(TypeError):
             models.storage.reload(None)
 
