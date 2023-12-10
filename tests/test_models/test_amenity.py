@@ -100,3 +100,7 @@ class TestAmenity(unittest.TestCase):
             'updated_at': dt.isoformat(),
         }
         self.assertDictEqual(am.to_dict(), tdict)
+
+
+if __name__ == "__main__":
+    unittest.main()
