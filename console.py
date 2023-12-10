@@ -30,6 +30,7 @@ class HBNBCommand(cmd.Cmd):
         do_destroy(self, *arguments): Destroys an instance
         do_all(self, args): Prints all string representation of instances
         do_update(self, *arguments): Updates an instance
+        do_count(self, args): Retrieves the number of instances of a class
     """
     prompt = "(hbnb) "
     class_names = [
@@ -149,6 +150,46 @@ class HBNBCommand(cmd.Cmd):
             else:
                 key = f"{arg[0]}.{arg[1]}"
                 setattr(HBNBCommand.objs[key], arg[2], arg[3].strip('"'))
+
+    def default(self, args):
+        """
+        Alters default to handle specific methods
+
+        Methods:
+            all(): Retrieves all class instances
+            count(): Retrieves the number of instances of a class
+        """
+
+        methods = [
+                "all()",
+                "count()",
+            ]
+
+        arg_list = args.split(".")
+
+        if len(arg_list) > 1:
+            class_name, method = arg_list
+
+            if method in methods and class_name in HBNBCommand.class_names:
+                self.onecmd(f"{method.strip('()')} {class_name}")
+        else:
+            pass
+
+    def do_count(self, args):
+        """Retrieves the number of instances of a class"""
+
+        all_instances = []
+        if args != '':
+            if args not in HBNBCommand.class_names:
+                print("** class doesn't exist **")
+            else:
+                for key in HBNBCommand.objs.keys():
+                    key_list = key.split(".")
+                    if key_list[0] == args:
+                        item = HBNBCommand.objs[key]
+                        all_instances.append(str(item))
+
+                print(len(all_instances))
 
 
 def switch_objects(obj_type):
