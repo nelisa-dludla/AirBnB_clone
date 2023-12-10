@@ -20,7 +20,7 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-class TestFileStorage_instantiation(unittest.TestCase):
+class TestFileStorage(unittest.TestCase):
     """Unittests for testing instantiation of the FileStorage class."""
 
     def test_FileStorage_instantiation_no_args(self):
@@ -38,10 +38,6 @@ class TestFileStorage_instantiation(unittest.TestCase):
 
     def test_storage_initializes(self):
         self.assertEqual(type(models.storage), FileStorage)
-
-
-class TestFileStorage_methods(unittest.TestCase):
-    """Unittests for testing methods of the FileStorage class."""
 
     @classmethod
     def setUp(self):
