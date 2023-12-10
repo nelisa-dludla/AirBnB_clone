@@ -14,7 +14,7 @@ from time import sleep
 from models.city import City
 
 
-class TestCity_instantiation(unittest.TestCase):
+class TestCity(unittest.TestCase):
     """Unittests for testing instantiation of the City class."""
 
     def test_no_args_instantiates(self):
@@ -88,11 +88,6 @@ class TestCity_instantiation(unittest.TestCase):
     def test_instantiation_with_None_kwargs(self):
         with self.assertRaises(TypeError):
             City(id=None, created_at=None, updated_at=None)
-
-
-
-class TestCity_to_dict(unittest.TestCase):
-    """Unittests for testing to_dict method of the City class."""
 
     def test_to_dict_type(self):
         self.assertTrue(dict, type(City().to_dict()))
