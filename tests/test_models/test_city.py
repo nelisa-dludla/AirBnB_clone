@@ -26,7 +26,7 @@ class TestCity(unittest.TestCase):
         self.assertIn(City(), models.storage.all().values())
 
     def test_id_is_public_str(self):
-        """Checks if  City id is a string"""
+        """Checks if id is a string"""
         self.assertEqual(str, type(City().id))
 
     def test_created_at_is_public_datetime(self):

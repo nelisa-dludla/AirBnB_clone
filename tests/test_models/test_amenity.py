@@ -17,6 +17,14 @@ from models.amenity import Amenity
 class TestAmenity(unittest.TestCase):
     """Unittests for testing instantiation of the Amenity class."""
 
+    def test_no_args_instantiates(self):
+        """Checks for instances with no args"""
+        self.assertEqual(Amenity, type(Amenity()))
+
+    def test_new_instance_stored_in_objects(self):
+        """Checks if instance is stored"""
+        self.assertIn(Amenity(), models.storage.all().values())
+
     def test_two_amenities_unique_ids(self):
         """Checks if two instances have different id's"""
         am1 = Amenity()
