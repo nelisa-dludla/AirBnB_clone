@@ -44,6 +44,13 @@ class TestAmenity(unittest.TestCase):
         sleep(0.05)
         am2 = Amenity()
         self.assertLess(am1.updated_at, am2.updated_at)
+    
+    def test_amenity_attribute(self):
+        """Tests the amenity class with  a value"""
+        amen = Amenity()
+        amen.name = "Pool"
+        amen_val = amen.to_dict()
+        self.assertEqual("Pool", amen.name)
 
     def test_str_representation(self):
         """Checks that the created instances has the below values"""
