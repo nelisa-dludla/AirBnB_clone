@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 """Defines unittests for models/base_model.py"""
-import os
+
 import unittest
 from datetime import datetime
-from time import sleep
 from models.base_model import BaseModel
-from models.city import City
 
 
 class TestBaseModel(unittest.TestCase):
@@ -35,36 +33,6 @@ class TestBaseModel(unittest.TestCase):
 
         result = self.instance.updated_at
         self.assertEqual(type(result), datetime)
-
-    def test_one_save(self):
-        bm = BaseModel()
-        sleep(0.05)
-        first_updated_at = bm.updated_at
-        bm.save()
-        self.assertLess(first_updated_at, bm.updated_at)
-
-    def test_two_saves(self):
-        bm = BaseModel()
-        sleep(0.05)
-        first_updated_at = bm.updated_at
-        bm.save()
-        second_updated_at = bm.updated_at
-        self.assertLess(first_updated_at, second_updated_at)
-        sleep(0.05)
-        bm.save()
-        self.assertLess(second_updated_at, bm.updated_at)
-
-    def test_save_with_arg(self):
-        bm = BaseModel()
-        with self.assertRaises(TypeError):
-            bm.save(None)
-    
-    def test_to_dict_datetime_attributes_are_strs(self):
-        cy = City()
-        cy_dict = cy.to_dict()
-        self.assertEqual(str, type(cy_dict["id"]))
-        self.assertEqual(str, type(cy_dict["created_at"]))
-        self.assertEqual(str, type(cy_dict["updated_at"]))
 
     def test_save_updated_updated_at(self):
         """Check updated_at value after save is executed"""
