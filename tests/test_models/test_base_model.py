@@ -3,6 +3,7 @@
 
 import unittest
 from datetime import datetime
+from time import sleep
 from models.base_model import BaseModel
 
 
@@ -33,6 +34,24 @@ class TestBaseModel(unittest.TestCase):
 
         result = self.instance.updated_at
         self.assertEqual(type(result), datetime)
+
+    def test_one_save(self):
+        bm = BaseModel()
+        sleep(0.05)
+        first_updated_at = bm.updated_at
+        bm.save()
+        self.assertLess(first_updated_at, bm.updated_at)
+
+    def test_two_saves(self):
+        bm = BaseModel()
+        sleep(0.05)
+        first_updated_at = bm.updated_at
+        bm.save()
+        second_updated_at = bm.updated_at
+        self.assertLess(first_updated_at, second_updated_at)
+        sleep(0.05)
+        bm.save()
+        self.assertLess(second_updated_at, bm.updated_at)
 
     def test_save_updated_updated_at(self):
         """Check updated_at value after save is executed"""
