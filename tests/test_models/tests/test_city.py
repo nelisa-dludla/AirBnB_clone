@@ -56,7 +56,7 @@ class TestCity(unittest.TestCase):
         sleep(0.05)
         cy2 = City()
         self.assertLess(cy1.updated_at, cy2.updated_at)
-    
+
     def test_city_attributes(self):
         """Tests the city class with values"""
         ct = City()

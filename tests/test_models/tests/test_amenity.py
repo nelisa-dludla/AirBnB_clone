@@ -44,7 +44,7 @@ class TestAmenity(unittest.TestCase):
         sleep(0.05)
         am2 = Amenity()
         self.assertLess(am1.updated_at, am2.updated_at)
-    
+
     def test_amenity_attribute(self):
         """Tests the amenity class with  a value"""
         amen = Amenity()
