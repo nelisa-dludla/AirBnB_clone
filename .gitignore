@@ -5,3 +5,4 @@ tests/tests_models/test_engine/__pycache__
 bigdata.json
 tests/test_models/__pycache__
 tests/test_models/test_engine/__pycache__
+tests/__pycache__
