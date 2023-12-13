@@ -79,11 +79,6 @@ class TestCity(unittest.TestCase):
         self.assertIn("'created_at': " + dt_repr, cystr)
         self.assertIn("'updated_at': " + dt_repr, cystr)
 
-    def test_args_unused(self):
-        """Checks if args are unused"""
-        cy = City(None)
-        self.assertNotIn(None, cy.__dict__.values())
-
     def test_instantiation_with_kwargs(self):
         """Checks instances with kwargs"""
         dt = datetime.today()
@@ -122,6 +117,7 @@ class TestCity(unittest.TestCase):
         self.assertEqual(str, type(cy_dict["updated_at"]))
 
     def test_args_unused(self):
+        """Tests when None is passed"""
         cy = City(None)
         self.assertNotIn(None, cy.__dict__.values())
 

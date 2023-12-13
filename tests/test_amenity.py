@@ -53,6 +53,7 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual("Pool", amen.name)
 
     def test_args_unused(self):
+        """Test when None used"""
         am = Amenity(None)
         self.assertNotIn(None, am.__dict__.values())
 
