@@ -53,6 +53,13 @@ class TestBaseModel(unittest.TestCase):
         bm.save()
         self.assertLess(second_updated_at, bm.updated_at)
 
+    def test_save_updates_file(self):
+        bm = BaseModel()
+        bm.save()
+        bmid = "BaseModel." + bm.id
+        with open("bigdata.json", "r") as f:
+            self.assertIn(bmid, f.read())
+
     def test_save_updated_updated_at(self):
         """Check updated_at value after save is executed"""
 
