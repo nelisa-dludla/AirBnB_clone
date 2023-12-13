@@ -60,6 +60,11 @@ class TestBaseModel(unittest.TestCase):
         with open("bigdata.json", "r") as f:
             self.assertIn(bmid, f.read())
 
+    def test_save_with_arg(self):
+        bm = BaseModel()
+        with self.assertRaises(TypeError):
+            bm.save(None)
+
     def test_save_updated_updated_at(self):
         """Check updated_at value after save is executed"""
 
