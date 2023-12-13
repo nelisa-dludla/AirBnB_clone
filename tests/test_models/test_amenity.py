@@ -52,6 +52,10 @@ class TestAmenity(unittest.TestCase):
         amen_val = amen.to_dict()
         self.assertEqual("Pool", amen.name)
 
+    def test_args_unused(self):
+        am = Amenity(None)
+        self.assertNotIn(None, am.__dict__.values())
+
     def test_str_representation(self):
         """Checks that the created instances has the below values"""
         dt = datetime.today()

@@ -121,6 +121,10 @@ class TestCity(unittest.TestCase):
         self.assertEqual(str, type(cy_dict["created_at"]))
         self.assertEqual(str, type(cy_dict["updated_at"]))
 
+    def test_args_unused(self):
+        cy = City(None)
+        self.assertNotIn(None, cy.__dict__.values())
+
     def test_to_dict_output(self):
         """Compares dict of instance with created tdict"""
         dt = datetime.today()
