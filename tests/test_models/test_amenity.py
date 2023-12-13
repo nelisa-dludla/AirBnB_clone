@@ -49,8 +49,7 @@ class TestAmenity(unittest.TestCase):
         """Tests the amenity class with  a value"""
         amen = Amenity()
         amen.name = "Pool"
-        amen_val = amen.to_dict()
-        self.assertEqual("Pool", amen.name)
+        self.assertEqual(amen.name, "Pool")
 
     def test_args_unused(self):
         """Test when None used"""

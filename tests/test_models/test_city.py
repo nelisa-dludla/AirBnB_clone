@@ -135,6 +135,15 @@ class TestCity(unittest.TestCase):
         }
         self.assertDictEqual(cy.to_dict(), tdict)
 
+    def test_attribute(self):
+        """Tests if attribute works"""
+        instance = City()
+        instance.name = "Paris"
+        instance.state_id = "State.id"
+
+        self.assertEqual(instance.name, "Paris")
+        self.assertEqual(instance.state_id, "State.id")
+
 
 if __name__ == "__main__":
     unittest.main()
